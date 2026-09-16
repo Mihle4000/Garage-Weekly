@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#08090b" />
+    <meta name="description" content="Garage Weekly is the Car Parking Multiplayer community showcase for builds, votes, rankings, and advertising partnerships." />
+    <meta property="og:title" content="Garage Weekly | Car Parking Multiplayer" />
+    <meta property="og:description" content="Discover builds, track your garage performance, and compete for the cover." />
+    <meta property="og:type" content="website" />
+    <title>Garage Weekly | Car Parking Multiplayer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @media(max-width:760px){
+        html{scroll-padding-top:132px}
+        body{font-size:16px}
+        .topbar{padding:12px 5vw;gap:12px}
+        .brand{font-size:16px}
+        .account-area{margin-left:auto}
+        .account-area .outline-button{padding:11px 12px;font-size:12px}
+        .main-nav{display:flex;overflow-x:auto;justify-content:flex-start;gap:24px;width:calc(100% + 10vw);margin:0 -5vw;padding:4px 5vw 8px;scrollbar-width:none;white-space:nowrap}
+        .main-nav::-webkit-scrollbar{display:none}
+        .main-nav a{flex:0 0 auto;min-height:32px;padding-top:5px}
+        .hero{grid-template-columns:1fr;min-height:0}
+        .hero-copy{padding:72px 7vw 48px}
+        .hero h1{font-size:clamp(54px,16vw,82px)}
+        .hero-actions{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+        .hero-actions button,.submit-button,.advertise-intro .primary-button{width:100%;min-height:48px}
+        .hero-art{min-height:430px}
+        .section,.showcase-section,.split-section,.submit-section,.how-section{padding-left:6vw;padding-right:6vw}
+        .section-heading{gap:22px;align-items:flex-start}
+        .filter-tabs{display:flex;overflow-x:auto;max-width:100%;scrollbar-width:none}
+        .filter-tabs::-webkit-scrollbar{display:none}
+        .filter-tabs button{flex:0 0 auto;min-height:42px}
+        .car-grid{grid-template-columns:1fr}
+        .car-card{min-width:0}
+        .leader-row{grid-template-columns:34px minmax(0,1fr) auto;gap:8px}
+        .leader-votes{font-size:11px}
+        .advertise-section,.advertiser-form-section{padding-left:6vw;padding-right:6vw}
+        .advertiser-form input,.advertiser-form select,.advertiser-form textarea,.paypal-form select{min-height:48px;font-size:16px}
+        .advertiser-form button,.paypal-form button{width:100%;min-height:48px}
+        .garage-launcher{bottom:76px}
+        .assistant-launcher{bottom:16px}
+        .assistant-panel{width:calc(100vw - 32px);height:min(620px,calc(100vh - 92px))}
+        .assistant-form input{font-size:16px}
+        .auth-modal{width:calc(100vw - 32px);padding:30px 22px}
+      }
+      @media(max-width:380px){.assistant-label{display:none}.assistant-launcher{width:48px;padding:0}.garage-launcher{font-size:8px}.account-area .outline-button{font-size:0}.account-area .outline-button span{font-size:16px;margin-left:0}}
+      .account-area{display:flex;align-items:center;gap:14px}.account-status{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}.auth-backdrop{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:24px;background:rgba(17,32,37,.72)}.auth-backdrop[hidden],.signup-only[hidden]{display:none}.auth-modal{position:relative;width:min(100%,470px);max-height:calc(100vh - 48px);overflow:auto;padding:42px;background:var(--cream);box-shadow:14px 14px 0 var(--lime)}.auth-modal h2{margin:0 0 14px;font-size:clamp(42px,8vw,68px);line-height:.86;letter-spacing:-.03em}.auth-modal h2 em{font-family:var(--serif);font-weight:400;color:var(--orange)}.auth-copy{max-width:330px;color:var(--muted);line-height:1.45;margin:0 0 24px}.modal-close{position:absolute;top:16px;right:18px;border:0;background:transparent;color:var(--ink);font-size:28px;line-height:1}.auth-tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:24px}.auth-tab{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);padding:10px 18px 10px 0;margin-right:22px;text-transform:uppercase;font-size:13px;font-weight:700}.auth-tab.active{border-color:var(--orange);color:var(--ink)}.auth-modal input{width:100%;border:1px solid var(--line);background:#fff;padding:13px 14px;color:var(--ink);outline:none}.auth-modal input:focus{border-color:var(--orange);box-shadow:0 0 0 2px rgba(255,116,76,.18)}.field-hint{font-family:var(--mono);font-size:10px;color:var(--muted);margin:-12px 0 18px}.auth-submit{width:100%;margin-top:18px}.auth-modal .form-note{margin-bottom:0;line-height:1.4}@media(max-width:760px){.topbar{height:auto;min-height:78px;flex-wrap:wrap;gap:12px;padding:14px 5vw}.main-nav{order:3;width:100%;justify-content:space-between;gap:12px}.account-status{display:none}.auth-modal{padding:32px 24px;box-shadow:8px 8px 0 var(--lime)}}
+        :root{--ink:#08090b;--paper:#17191d;--cream:#22252a;--lime:#c8cbd0;--muted:#8c929b;--line:#3a3e46;--orange:#ff2638}
+        body{background:var(--paper);color:#f1f2f4}.topbar,.hero{background:var(--cream)}.main-nav a,.eyebrow,.form-note,.fine-print{color:var(--muted)}.car-meta,.leaderboard-panel,.submit-section,.how-section{background:var(--paper)}.monthly-panel{background:#0d0f12}.outline-button,.primary-button,.text-button{color:#f1f2f4}.outline-button{border-color:#c8cbd0}.primary-button{color:#08090b;background:var(--orange);border-color:var(--orange)}.brand-mark{background:var(--orange);color:#08090b}.brand-accent,.hero h1 em,.section-heading h2 em,.submit-intro h2 em,.how-section h2 em,.monthly-panel h2 em{color:var(--orange)}.hero-grid{opacity:.22}.line,.topbar{border-color:var(--line)}
+      .assistant-launcher{position:fixed;right:24px;bottom:24px;z-index:12;display:flex;align-items:center;gap:10px;border:1px solid var(--ink);background:var(--lime);color:var(--ink);padding:13px 16px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;box-shadow:5px 5px 0 var(--ink)}.assistant-launcher strong{font-family:var(--mono);font-size:12px}.assistant-pulse{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(255,116,76,.2)}.assistant-panel{position:fixed;right:24px;bottom:88px;z-index:13;width:min(410px,calc(100vw - 32px));height:min(610px,calc(100vh - 112px));display:flex;flex-direction:column;padding:24px;background:var(--cream);border:1px solid var(--ink);box-shadow:9px 9px 0 var(--orange);opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .2s ease,transform .2s ease}.assistant-panel.is-open{opacity:1;pointer-events:auto;transform:translateY(0)}.assistant-header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:16px}.assistant-header .eyebrow{margin-bottom:8px}.assistant-header h2{margin:0;font-size:34px;line-height:.9}.assistant-header h2 em{font-family:var(--serif);font-weight:400;color:var(--orange)}.assistant-close{border:0;background:transparent;color:var(--ink);font-size:27px;line-height:1}.assistant-intro{font-size:14px;line-height:1.35;color:var(--muted);margin:16px 0}.assistant-messages{flex:1;overflow:auto;padding:2px 3px 12px}.assistant-message{max-width:91%;padding:10px 12px;margin:9px 0;background:#e7ebe7;border-left:3px solid var(--muted)}.assistant-message.user{margin-left:auto;background:var(--lime);border-left:0;border-right:3px solid var(--ink)}.assistant-message p{margin:0;font-size:14px;line-height:1.4}.assistant-message small{display:block;margin-top:8px;font-family:var(--mono);font-size:9px;text-transform:uppercase;color:var(--muted)}.assistant-message.is-loading{border-left-color:var(--orange)}.assistant-suggestions{display:flex;gap:7px;overflow:auto;padding:8px 0}.assistant-suggestions button{flex:0 0 auto;border:1px solid var(--line);background:transparent;color:var(--ink);padding:8px 10px;font-size:11px}.assistant-suggestions button:hover{border-color:var(--orange)}.assistant-form{display:flex;gap:8px}.assistant-form input{min-width:0;flex:1;border:1px solid var(--line);background:#fff;color:var(--ink);padding:12px;outline:none}.assistant-form input:focus{border-color:var(--orange)}.assistant-form .primary-button{padding:10px 15px}.assistant-footnote{font-family:var(--mono);font-size:9px;line-height:1.35;color:var(--muted);margin:12px 0 0}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:760px){.assistant-launcher{right:16px;bottom:16px}.assistant-panel{right:16px;bottom:76px;height:min(600px,calc(100vh - 92px));padding:20px;box-shadow:6px 6px 0 var(--orange)}}
+    </style>
+    <style>
+      .assistant-launcher{width:52px;height:52px;display:grid;place-items:center;padding:0;position:fixed;right:24px;bottom:24px}
+      body{position:relative;isolation:isolate;overflow-x:hidden}body::before,body::after{content:'';position:fixed;inset:-18%;z-index:2;pointer-events:none;opacity:.28;mix-blend-mode:screen;background-image:linear-gradient(135deg,transparent 0 38%,rgba(200,203,208,.38) 38% 41%,transparent 41% 59%,rgba(200,203,208,.24) 59% 62%,transparent 62%),linear-gradient(45deg,transparent 0 38%,rgba(255,38,56,.16) 38% 41%,transparent 41% 59%,rgba(200,203,208,.2) 59% 62%,transparent 62%);background-size:92px 92px,92px 92px;transform:rotate(8deg);animation:tribal-drift 24s linear infinite}body::after{opacity:.15;background-size:138px 138px,138px 138px;transform:rotate(-8deg) scale(1.08);animation:tribal-drift-reverse 31s linear infinite}@keyframes tribal-drift{from{background-position:0 0,46px 46px}to{background-position:184px 92px,230px 138px}}@keyframes tribal-drift-reverse{from{background-position:0 0,69px 69px}to{background-position:-276px -138px,-207px -69px}}
+      .site-shell{position:relative;z-index:1;background:transparent}.topbar,.hero{background:rgba(34,37,42,.93)}.car-meta,.leaderboard-panel,.submit-section,.how-section,.garage-section{background:rgba(23,25,29,.91)}.monthly-panel{background:rgba(13,15,18,.94)}
+      body::before,body::after{z-index:0;inset:-28%;opacity:.42;filter:blur(34px);mix-blend-mode:screen;background-image:radial-gradient(ellipse 28% 18% at 18% 24%,rgba(202,207,214,.22),transparent 72%),radial-gradient(ellipse 34% 20% at 78% 32%,rgba(130,138,150,.18),transparent 72%),radial-gradient(ellipse 26% 18% at 42% 78%,rgba(255,38,56,.09),transparent 72%),radial-gradient(ellipse 38% 22% at 90% 84%,rgba(190,196,204,.14),transparent 72%);background-size:160% 150%;transform:rotate(-8deg) scale(1.2);animation:smoke-flow 30s ease-in-out infinite alternate}
+      body::after{opacity:.28;background-image:radial-gradient(ellipse 30% 16% at 72% 18%,rgba(220,224,230,.16),transparent 70%),radial-gradient(ellipse 24% 22% at 24% 62%,rgba(255,38,56,.08),transparent 70%),radial-gradient(ellipse 38% 18% at 58% 92%,rgba(145,151,162,.14),transparent 70%);background-size:180% 165%;transform:rotate(10deg) scale(1.25);animation:smoke-flow-reverse 38s ease-in-out infinite alternate}
+      @keyframes smoke-flow{0%{background-position:0 12%;transform:rotate(-8deg) scale(1.2)}50%{background-position:45% 50%;transform:rotate(-3deg) scale(1.28)}100%{background-position:100% 82%;transform:rotate(5deg) scale(1.2)}}@keyframes smoke-flow-reverse{0%{background-position:100% 78%;transform:rotate(10deg) scale(1.25)}50%{background-position:48% 34%;transform:rotate(4deg) scale(1.32)}100%{background-position:0 8%;transform:rotate(-6deg) scale(1.25)}}
+      .topbar{position:sticky;top:0;z-index:10;background:rgba(34,37,42,.94);backdrop-filter:blur(12px)}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body::before,body::after{animation:none}.car-card{animation:none!important}}
+      .assistant-car{font-size:23px;line-height:1;filter:saturate(.9)}
+      .assistant-launcher .assistant-pulse{position:absolute;top:8px;right:8px;width:7px;height:7px}
+      @media(max-width:760px){.assistant-launcher{right:16px;bottom:16px;width:48px;height:48px}}
+    </style>
+    <style>
+      .assistant-launcher{width:auto;min-width:52px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 14px}
+      .assistant-launcher .assistant-label{font-family:var(--mono);font-size:10px;letter-spacing:.04em}
+      @media(max-width:760px){.assistant-launcher{padding:0 12px}.assistant-launcher .assistant-label{font-size:9px}}
+    </style>
+    <style>
+      .garage-section{padding:104px 10vw;background:var(--cream);border-top:1px solid var(--line)}.garage-account{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}.analytics-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:30px 0 34px}.analytics-grid article{padding:22px 20px 20px 0;border-right:1px solid var(--line)}.analytics-grid article:not(:first-child){padding-left:20px}.analytics-grid article:last-child{border-right:0}.analytics-grid span,.analytics-grid small{display:block;font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.analytics-grid strong{display:block;font-size:44px;line-height:1;margin:10px 0 7px}.garage-list{min-height:80px}.garage-row{display:grid;grid-template-columns:minmax(150px,1fr) 80px minmax(120px,1.5fr);gap:24px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}.garage-row strong,.garage-row small{display:block}.garage-row small{margin-top:5px;color:var(--muted);font-family:var(--mono);font-size:10px;text-transform:uppercase}.garage-metric{text-align:right}.garage-metric b{display:block;font-size:24px}.garage-metric span{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase}.garage-bar{height:6px;background:var(--line)}.garage-bar span{display:block;height:100%;background:var(--orange)}.garage-empty{padding:25px 0;color:var(--muted);font-family:var(--mono);font-size:11px;text-transform:uppercase}.garage-login{margin-top:24px}@media(max-width:760px){.garage-section{padding:72px 6vw}.analytics-grid{grid-template-columns:repeat(2,1fr)}.analytics-grid article:nth-child(2){border-right:0}.analytics-grid article:nth-child(3){padding-left:0;border-top:1px solid var(--line)}.analytics-grid article:nth-child(4){border-top:1px solid var(--line)}.garage-row{grid-template-columns:1fr 56px;gap:12px}.garage-bar{grid-column:1 / -1}.garage-metric{text-align:right}}
+    </style>
+    <style>
+      .garage-launcher{position:fixed;right:24px;bottom:88px;z-index:12;width:52px;height:52px;display:grid;place-items:center;border:1px solid var(--cream);background:var(--ink);color:var(--lime);font-family:var(--mono);font-size:11px;font-weight:500;line-height:1.1;box-shadow:5px 5px 0 var(--orange)}
+      @media(max-width:760px){.garage-launcher{right:16px;bottom:76px;width:48px;height:48px;font-size:9px}}
+    </style>
+    <style>
+      .advertise-section{display:grid;grid-template-columns:minmax(260px,.8fr) 1.2fr;gap:8vw;padding:104px 10vw;background:rgba(34,37,42,.94);border-top:1px solid var(--line)}.advertise-intro h2,.advertiser-form-section h2{margin:0 0 22px;font-size:clamp(48px,7vw,88px);line-height:.86}.advertise-intro h2 em,.advertiser-form-section h2 em{font-family:var(--serif);font-weight:400;color:var(--orange)}.advertise-intro>p:not(.eyebrow),.advertiser-form-section>div>p:not(.eyebrow){max-width:390px;color:var(--muted);line-height:1.45;margin:0 0 26px}.ad-slots{border-top:1px solid var(--line)}.ad-slot{display:grid;grid-template-columns:44px 1fr auto;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}.slot-number{font-family:var(--mono);font-size:12px;color:var(--orange)}.ad-slot strong{display:block;font-size:22px}.ad-slot p{margin:5px 0;color:var(--muted);font-size:14px}.ad-slot small,.ad-slot>b{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.ad-slot>b{color:var(--orange);white-space:nowrap}.advertiser-form-section{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw;padding:104px 10vw;background:rgba(23,25,29,.94);border-top:1px solid var(--line)}.advertiser-form{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.advertiser-form .field-label,.advertiser-form input,.advertiser-form select,.advertiser-form textarea,.advertiser-form button,.advertiser-form .form-note{grid-column:1 / -1}.advertiser-form input,.advertiser-form select,.advertiser-form textarea,.paypal-form select{width:100%;border:1px solid var(--line);background:var(--cream);color:#f1f2f4;padding:13px 14px;outline:none}.advertiser-form select{appearance:auto}.advertiser-form textarea{min-height:110px;resize:vertical}.advertiser-form input:focus,.advertiser-form select:focus,.advertiser-form textarea:focus,.paypal-form select:focus{border-color:var(--orange);box-shadow:0 0 0 2px rgba(255,38,56,.16)}.advertiser-form button{margin-top:18px;width:max-content}.advertiser-form .form-note{margin-top:14px}.paypal-form{margin-top:34px;padding-top:24px;border-top:1px solid var(--line)}.paypal-form .field-label{display:block;margin-bottom:8px}.paypal-form button{margin-top:14px}.paypal-form small{display:block;margin-top:12px;color:var(--muted);font-family:var(--mono);font-size:9px;line-height:1.4}@media(max-width:760px){.advertise-section,.advertiser-form-section{display:block;padding:72px 6vw}.ad-slots{margin-top:42px}.ad-slot{grid-template-columns:34px 1fr}.ad-slot>b{grid-column:2}.advertiser-form{margin-top:38px}}
+    </style>
+    <style>
+      .comment-list{margin-top:12px;border-top:1px solid var(--line);max-height:96px;overflow:auto}.comment-list p{margin:7px 0;color:var(--muted);font-family:var(--mono);font-size:10px;line-height:1.3}.comment-list b{color:var(--orange);font-weight:500}.comment-form{display:flex;gap:6px;margin-top:10px}.comment-form input{min-width:0;flex:1;border:1px solid var(--line);background:transparent;color:var(--ink);padding:8px 9px;font-family:var(--mono);font-size:10px}.comment-form button{width:32px;border:1px solid var(--orange);background:var(--orange);color:var(--ink);font-weight:700}.comment-form input:focus{border-color:var(--orange);outline:none;box-shadow:0 0 0 2px rgba(255,38,56,.15)}
+    </style>
+    <style>
+      @media (max-width: 760px) {
+        html { scroll-padding-top: 108px; }
+        body { padding-bottom: env(safe-area-inset-bottom); overscroll-behavior-x: none; }
+        .topbar { padding-top: max(12px, env(safe-area-inset-top)); }
+        .main-nav { justify-content: flex-start !important; gap: 20px !important; -webkit-overflow-scrolling: touch; }
+        .main-nav a,
+        .outline-button,
+        .primary-button,
+        .text-button,
+        .filter-tabs button,
+        .auth-tab,
+        .modal-close,
+        .assistant-close,
+        .vote-button,
+        .comment-form button,
+        .assistant-form button { min-height: 44px; }
+        .outline-button,
+        .primary-button { padding-left: 16px; padding-right: 16px; }
+        .text-button { padding: 10px 0; }
+        input,
+        select,
+        textarea { font-size: 16px !important; }
+        .hero-copy { padding-top: 56px; }
+        .hero-art { min-height: min(430px, 112vw); }
+        .section-heading { flex-wrap: wrap; }
+        .section-heading > div:first-child { min-width: 0; }
+        .filter-tabs { width: 100%; padding-bottom: 4px; }
+        .filter-tabs button { padding: 10px 14px; }
+        .photo-slot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .comment-form button { width: 44px; flex: 0 0 44px; }
+        .assistant-panel { right: max(16px, env(safe-area-inset-right)); bottom: calc(76px + env(safe-area-inset-bottom)); height: min(610px, calc(100dvh - 104px)); }
+        .assistant-launcher { right: max(16px, env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom)); }
+        .garage-launcher { right: max(16px, env(safe-area-inset-right)); bottom: calc(76px + env(safe-area-inset-bottom)); }
+        .auth-backdrop { align-items: end; padding: 12px; padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+        .auth-modal { max-height: calc(100dvh - 24px); width: 100%; }
+        footer { flex-direction: column; align-items: flex-start; gap: 16px; padding-bottom: max(28px, env(safe-area-inset-bottom)); }
+      }
+      @media (max-width: 380px) {
+        .brand { font-size: 15px; }
+        .hero-copy { padding-left: 6vw; padding-right: 6vw; }
+        .countdown { gap: 7px; }
+        .countdown strong { font-size: 28px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Garage Weekly home"><span class="brand-mark">GW</span><span>GARAGE<span class="brand-accent">WEEKLY</span></span></a>
+        <nav class="main-nav" aria-label="Main navigation"><a class="active" href="#showcase">Showcase</a><a href="#leaderboard">Leaderboard</a><a href="#advertise">Advertise</a><a href="#how-it-works">How it works</a></nav>
+        <div class="account-area"><span class="account-status" id="account-status">Guest mode</span><button class="outline-button" id="account-button">Log in <span>↗</span></button></div>
+      </header>
+
+      <main id="top">
+        <section class="hero" id="showcase">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="signal-dot"></span> Live community challenge · week 42</p>
+            <h1>THE CAR<br /><em>OF THE WEEK.</em></h1>
+            <p class="hero-lede">One build. Five shots. Seven days to make the whole community stop scrolling.</p>
+            <div class="hero-actions"><button class="primary-button" data-scroll="#showcase-grid">Vote for a build <span>→</span></button><button class="text-button" data-scroll="#how-it-works">See the rules <span>↓</span></button></div>
+            <div class="countdown" aria-label="Time remaining this week"><div><strong id="days">02</strong><span>days</span></div><i>:</i><div><strong id="hours">14</strong><span>hours</span></div><i>:</i><div><strong id="minutes">37</strong><span>minutes</span></div><i>:</i><div><strong id="seconds">08</strong><span>seconds</span></div></div>
+          </div>
+          <div class="hero-art"><div class="hero-grid"></div><div class="hero-rank">#01 <span>this week</span></div><img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1400&q=85" alt="White sports car on a mountain road" /><div class="hero-caption"><span>01 / 05</span><strong>VELVET // RS</strong><small>by @ravenbuilds</small></div><div class="hero-tire"></div></div>
+        </section>
+
+        <section class="advertise-section" id="advertise"><div class="advertise-intro"><p class="eyebrow">For brands in motion</p><h2>PUT YOUR<br /><em>NAME IN THE GRID.</em></h2><p>Reach CPM players while they discover builds, compare performance, and return each week for the next cover car.</p><button class="primary-button" data-scroll="#advertiser-form">Request a placement <span>→</span></button></div><div class="ad-slots"><article class="ad-slot"><span class="slot-number">01</span><div><strong>Cover takeover</strong><p>Premium placement beside the weekly cover story.</p><small>Best for launches · Weekly</small></div><b>Premium</b></article><article class="ad-slot"><span class="slot-number">02</span><div><strong>Grid sponsor</strong><p>Your message sits above the community showcase.</p><small>Best for awareness · Weekly</small></div><b>Featured</b></article><article class="ad-slot"><span class="slot-number">03</span><div><strong>Driver bulletin</strong><p>A focused message inside the community update.</p><small>Best for offers · Monthly</small></div><b>Targeted</b></article></div></section>
+
+        <section class="section showcase-section" id="showcase-grid">
+          <div class="section-heading"><div><p class="eyebrow">The contenders</p><h2>Pick your<br /><em>favourite.</em></h2></div><div class="filter-tabs" role="tablist"><button class="selected" data-filter="all">All builds</button><button data-filter="cpm">CPM</button><button data-filter="demo">CPM Demo</button></div></div>
+          <div class="car-grid" id="car-grid"></div>
+        </section>
+
+        <section class="split-section" id="leaderboard">
+          <div class="leaderboard-panel"><div class="section-heading compact"><div><p class="eyebrow">Live standings</p><h2>Top <em>drivers.</em></h2></div><span class="live-pill"><span></span> updates live</span></div><div class="leaderboard-list" id="leaderboard-list"></div><p class="fine-print">Votes close Sundays at 23:59 UTC. One vote per build, per week.</p></div>
+          <div class="monthly-panel"><p class="eyebrow">Monthly spotlight · October</p><h2>THE <em>FINAL 3.</em></h2><p>At month’s end, the top three drivers earn the front page. Their builds, their style, their moment.</p><div class="spotlight-stack" id="spotlight-stack"></div><button class="outline-button light" data-scroll="#submit">Enter this month <span>↗</span></button></div>
+        </section>
+
+        <section class="submit-section" id="submit"><div class="submit-intro"><p class="eyebrow">Your garage, next</p><h2>SHOW US<br /><em>WHAT YOU BUILT.</em></h2><p>Submit up to five photos of your car. Any image dimensions are welcome.</p><div class="rule-list"><span><b>01</b> Choose your game</span><span><b>02</b> Fill five photo slots</span><span><b>03</b> Get featured</span></div></div><form class="submit-form" id="submit-form"><div class="game-picker"><label>Game</label><div class="game-options"><label><input type="radio" name="game" value="cpm" checked /><span>CPM</span></label><label><input type="radio" name="game" value="demo" /><span>CPM Demo</span></label></div></div><label class="field-label" for="build-name">Build name</label><input id="build-name" name="buildName" required maxlength="28" placeholder="e.g. NIGHTSHIFT // M3" /><label class="field-label" for="driver-name">Display tag (optional)</label><input id="driver-name" name="driverName" maxlength="20" placeholder="@yourhandle" /><div class="photo-slots"><label class="field-label">Car photos <small>up to 5 · any dimensions</small></label><div class="photo-slot-grid"><label class="photo-slot" for="car-photo-1"><span class="photo-slot-number">01</span><span class="photo-slot-preview" id="photo-preview-1">+</span><small>Photo 1</small><input id="car-photo-1" class="car-photo-input" type="file" accept="image/*" data-slot="1" /></label><label class="photo-slot" for="car-photo-2"><span class="photo-slot-number">02</span><span class="photo-slot-preview" id="photo-preview-2">+</span><small>Photo 2</small><input id="car-photo-2" class="car-photo-input" type="file" accept="image/*" data-slot="2" /></label><label class="photo-slot" for="car-photo-3"><span class="photo-slot-number">03</span><span class="photo-slot-preview" id="photo-preview-3">+</span><small>Photo 3</small><input id="car-photo-3" class="car-photo-input" type="file" accept="image/*" data-slot="3" /></label><label class="photo-slot" for="car-photo-4"><span class="photo-slot-number">04</span><span class="photo-slot-preview" id="photo-preview-4">+</span><small>Photo 4</small><input id="car-photo-4" class="car-photo-input" type="file" accept="image/*" data-slot="4" /></label><label class="photo-slot" for="car-photo-5"><span class="photo-slot-number">05</span><span class="photo-slot-preview" id="photo-preview-5">+</span><small>Photo 5</small><input id="car-photo-5" class="car-photo-input" type="file" accept="image/*" data-slot="5" /></label></div></div><button class="primary-button submit-button" type="submit">Send it to the grid <span>→</span></button><p class="form-note" id="form-note">Your entry is saved in this browser for the demo.</p></form></section>
+
+        <section class="advertiser-form-section" id="advertiser-form"><div><p class="eyebrow">Start a conversation</p><h2>RESERVE A<br /><em>PLACEMENT.</em></h2><p>Tell us what you want to promote and the team can match your campaign to the right driver audience.</p></div><div><form class="advertiser-form" id="advertiser-inquiry-form"><label class="field-label" for="company-name">Company name</label><input id="company-name" name="company" required maxlength="60" placeholder="Your company" /><label class="field-label" for="company-email">Work email</label><input id="company-email" name="email" type="email" required maxlength="100" placeholder="team@company.com" /><label class="field-label" for="company-slot">Preferred slot</label><select id="company-slot" name="slot" required><option value="">Choose a placement</option><option>Cover takeover</option><option>Grid sponsor</option><option>Driver bulletin</option></select><label class="field-label" for="company-message">Campaign details</label><textarea id="company-message" name="message" maxlength="500" placeholder="What are you launching?"></textarea><button class="primary-button" type="submit">Send inquiry <span>→</span></button><p class="form-note" id="advertiser-note">Inquiry is saved locally in this demo.</p></form><form class="paypal-form" id="paypal-payment-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"><p class="field-label">Pay for a placement</p><select id="paypal-slot" required><option value="">Choose a paid slot</option><option value="Cover takeover|500.00">Cover takeover · $500</option><option value="Grid sponsor|250.00">Grid sponsor · $250</option><option value="Driver bulletin|100.00">Driver bulletin · $100</option></select><input type="hidden" name="cmd" value="_xclick" /><input type="hidden" name="business" value="Mihleninzi14@gmail.com" /><input type="hidden" name="item_name" id="paypal-item" /><input type="hidden" name="amount" id="paypal-amount" /><input type="hidden" name="currency_code" value="USD" /><button class="outline-button" type="submit">Continue to PayPal <span>↗</span></button><small>Payments are sent to Mihleninzi14@gmail.com through PayPal.</small></form></div></section>
+
+        <section class="garage-section" id="my-garage"><div class="section-heading compact"><div><p class="eyebrow">Personal dashboard</p><h2>MY <em>GARAGE.</em></h2></div><span class="garage-account" id="garage-account">Sign in to view</span></div><div class="analytics-grid"><article><span>Total votes</span><strong id="analytics-votes">--</strong><small>across your posted cars</small></article><article><span>Cars posted</span><strong id="analytics-cars">--</strong><small>currently on the grid</small></article><article><span>Best rank</span><strong id="analytics-rank">--</strong><small>among all weekly builds</small></article><article><span>Vote rate</span><strong id="analytics-rate">--</strong><small>votes per posted car</small></article></div><div class="garage-list" id="garage-list"></div><button class="outline-button garage-login" id="garage-login">Log in to see analytics <span>↗</span></button></section>
+
+        <section class="how-section" id="how-it-works"><p class="eyebrow">The format</p><h2>BUILT FOR<br /><em>THE COMMUNITY.</em></h2><div class="steps"><article><span>01</span><h3>Submit</h3><p>Show your build from five angles. Clean shots, custom details, real personality.</p></article><article><span>02</span><h3>Vote</h3><p>Browse the weekly grid and give one heart to the build that deserves the cover.</p></article><article><span>03</span><h3>Get featured</h3><p>Win the week and your car becomes the face of Garage Weekly until the next winner.</p></article></div></section>
+      </main>
+      <footer><a class="brand" href="#top"><span class="brand-mark">GW</span><span>GARAGE<span class="brand-accent">WEEKLY</span></span></a><span>Built for the CPM community · 2026</span><span>CPM <b>×</b> CPM DEMO</span></footer>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <div class="auth-backdrop" id="auth-backdrop" hidden>
+      <section class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+        <button class="modal-close" id="auth-close" aria-label="Close login dialog">×</button>
+        <p class="eyebrow"><span class="signal-dot"></span> Verified driver access</p>
+        <h2 id="auth-title">ENTER THE<br /><em>DRIVER GRID.</em></h2>
+        <p class="auth-copy">Use your Car Parking Multiplayer ID to vote and submit builds. One account per player.</p>
+        <div class="auth-tabs" role="tablist"><button class="auth-tab active" data-auth-mode="login">Log in</button><button class="auth-tab" data-auth-mode="signup">Sign up</button></div>
+        <form id="auth-form">
+          <label class="field-label" for="parking-id">Car Parking ID</label>
+          <input id="parking-id" name="parkingId" required inputmode="text" autocomplete="username" placeholder="e.g. CPM-482917" />
+          <p class="field-hint">6–24 letters, numbers, or hyphens.</p>
+          <label class="field-label" for="auth-passcode">Passcode</label>
+          <input id="auth-passcode" name="passcode" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters" />
+          <label class="field-label signup-only" for="auth-email">Email (for recovery)</label>
+          <input class="signup-only" id="auth-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+          <button class="primary-button auth-submit" type="submit" id="auth-submit">Log in <span>→</span></button>
+          <p class="form-note" id="auth-note">Demo verification checks the ID format in this browser. Production verification must use a server-side CPM account service.</p>
+        </form>
+      </section>
+    </div>
+    <aside class="assistant-panel" id="assistant-panel" aria-labelledby="assistant-title" inert>
+      <div class="assistant-header">
+        <div><p class="eyebrow"><span class="signal-dot"></span> Live help desk</p><h2 id="assistant-title">AI <em>MECHANIC.</em></h2></div>
+        <button class="assistant-close" id="assistant-close" aria-label="Close assistant">×</button>
+      </div>
+      <p class="assistant-intro">Ask about Garage Weekly, CPM, car culture, or a general topic. I can look up public information without taking you away from this page.</p>
+      <div class="assistant-messages" id="assistant-messages" aria-live="polite"></div>
+      <div class="assistant-suggestions"><button data-assistant-prompt="How does voting work?">How does voting work?</button><button data-assistant-prompt="What is Car Parking Multiplayer?">What is CPM?</button></div>
+      <form class="assistant-form" id="assistant-form"><label class="sr-only" for="assistant-input">Ask AI Mechanic</label><input id="assistant-input" maxlength="240" autocomplete="off" placeholder="Ask a question..." required /><button class="primary-button" type="submit" aria-label="Send question">→</button></form>
+      <p class="assistant-footnote">Public web answers are sourced from Wikipedia. This assistant is informational, not official CPM support.</p>
+    </aside>
+    <button class="assistant-launcher" id="assistant-launcher" aria-label="Open AI Mechanic assistant" title="Open AI Mechanic"><span class="assistant-pulse"></span><span class="assistant-car" role="img" aria-label="car">🚗</span><span class="assistant-label">AI Mechanic</span></button>
+    <button class="garage-launcher" id="garage-launcher" aria-label="Open My Garage analytics" title="Open My Garage analytics">MY<br />GARAGE</button>
+    <script src="app.js"></script>
+  </body>
+</html>
